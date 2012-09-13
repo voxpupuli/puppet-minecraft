@@ -9,3 +9,4 @@ project_page 'https://github.com/branan/puppet-minecraft'
 
 dependency 'puppetlabs/stdlib', '>= 2.2.0'
 dependency 'branan/s3file', '>= 0.5.0'
+dependency 'puppetlabs/java', '>= 0.1.6'
