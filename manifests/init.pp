@@ -10,6 +10,7 @@ class minecraft(
   if $manage_java {
     class { 'java':
       distribution => 'jre',
+      before       => Service['minecraft']
     }
   }
 
@@ -19,7 +20,7 @@ class minecraft(
     }
   }
 
-  if $manage_curl {
+  if $manage_cuprl {
     package {'curl':
       before => S3file["${homedir}/minecraft_server.jar"],
     }
