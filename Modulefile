@@ -1,5 +1,5 @@
 name    'branan-minecraft'
-version '0.1.0'
+version '0.1.1'
 source  'https://github.com/branan/puppet-minecraft'
 author  'Branan Purvine-Riley'
 license 'Apache License 2.0'
