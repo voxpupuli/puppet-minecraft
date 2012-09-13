@@ -20,7 +20,7 @@ class minecraft(
     }
   }
 
-  if $manage_cuprl {
+  if $manage_curl {
     package {'curl':
       before => S3file["${homedir}/minecraft_server.jar"],
     }
