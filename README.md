@@ -20,6 +20,18 @@ behaves:
   * `heap_size`: The maximum Java heap size for the Minecraft service in megabytes
   * `heap_start`: The initial Java heap size for the Minecraft service in megabytes`
 
+## Server configuration
+
+Full configuration of the Minecraft server is supported. Simply use
+the `minecraft::server_prop` type.
+
+    minecraft::server_prop { 'spawn-monsters':
+      value => 'true'
+    }
+
+Consult your favorite Minecraft resource for the full list of server
+properties.
+
 ## Managing players
 
 This module includes several Puppet defines to allow managing the
