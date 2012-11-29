@@ -17,3 +17,5 @@ behaves:
   * `manage_java`: Should this module manage the `java` package?
   * `manage_screen`: Should this module manage the `screen` package?
   * `manage_curl`: Should this module manage the `curl` package?
+  * `heap_size`: The maximum Java heap size for the Minecraft service in megabytes
+  * `heap_start`: The initial Java heap size for the Minecraft service in megabytes`

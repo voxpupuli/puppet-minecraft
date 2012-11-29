@@ -17,6 +17,8 @@
 SERVICE='minecraft_server.jar'
 USERNAME="<%= @user %>"
 MCPATH="<%= @homedir %>"
+MAX_HEAP="<%= @heap_size %>"
+MIN_HEAP="<%= @heap_start %>"
 ## If you have more than one Minecraft instance to control, add additional MCPATH
 ## variables below
 # MCPATH2='/home/mcuser/minecraft2'
@@ -38,7 +40,7 @@ mc_start() {
   else
     echo "$SERVICE was not running... starting."
     cd $MCPATH
-    as_user "cd $MCPATH && screen -dmS survival-mc java -Xmx2048M -Xms2048M -jar minecraft_server.jar nogui"
+    as_user "cd $MCPATH && screen -dmS survival-mc java -Xmx${MAX_HEAP}M -Xms${MIN_HEAP}M -jar minecraft_server.jar nogui"
   ## Add additional lines for additioanl Minecrat instances below here
   # as_user "cd $MCPATH2 && screen -dmS creative-mc java -Xmx2048M -Xms2048M -jar minecraft_server.jar nogui"
     sleep 7

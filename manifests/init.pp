@@ -5,6 +5,8 @@ class minecraft(
   $manage_java   = true,
   $manage_screen = true,
   $manage_curl   = true,
+  $heap_size     = 2048,
+  $heap_start    = 512,
 )
 {
   if $manage_java {
