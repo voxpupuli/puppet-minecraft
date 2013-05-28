@@ -1,3 +1,9 @@
+# Fork of [branan/minecraft](https://forge.puppetlabs.com/branan/minecraft)
+I went ahead and re-factored Branan's Mincraft Puppet module because I 
+wanted to be able to specify a bukkit or vanilla install. I also plan to
+replace the init script with Ahtenus's
+[minecraft-init](https://github.com/Ahtenus/minecraft-init) project.
+
 # Puppet Module for Minecraft
 
 `puppet-minecraft` installs and configures your Minecraft server with Puppet!
