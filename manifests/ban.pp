@@ -5,7 +5,7 @@
 define minecraft::ban ()
 {
   file_line { $name:
-    path   =>"${minecraft::homedir}/banned-players.txt",
+    path   =>"${minecraft::install_dir}/banned-players.txt",
     line   => $name,
     notify => Service['minecraft'],
   }

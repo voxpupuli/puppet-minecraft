@@ -12,6 +12,6 @@ class minecraft::source {
 
   wget::fetch { 'minecraft':
     source => $download,
-    destination => '${minecraft::install_dir}/minecraft_server.jar',
+    destination => "${minecraft::install_dir}/minecraft_server.jar",
   }
 }
