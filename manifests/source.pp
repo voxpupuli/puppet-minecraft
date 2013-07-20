@@ -2,7 +2,7 @@ class minecraft::source {
 
   $bukkit_source = 'http://cbukk.it/craftbukkit-beta.jar'
 
-  $vanilla_source = 'https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar'
+  $vanilla_source = 'https://s3.amazonaws.com/Minecraft.Download/versions/1.6.2/minecraft_server.1.6.2.jar'
 
   case $minecraft::source {
     'bukkit':               { $download = $bukkit_source }
