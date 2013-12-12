@@ -1,6 +1,12 @@
 class minecraft::settings {
 
-  include minecraft::server_prop
+  file { "${minecraft::install_dir}/server.properties":
+    ensure  => file,
+    content => template('minecraft/server.properties.erb'),
+    owner   => $minecraft::user,
+    group   => $minecraft::group,
+    mode    => '0664',
+  }
 
   file { "${minecraft::install_dir}/ops.txt":
     ensure => present,
