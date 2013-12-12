@@ -13,13 +13,44 @@
 #
 
 class minecraft(
-  $user          = 'minecraft',
-  $group         = 'minecraft',
-  $install_dir   = '/opt/minecraft',
-  $source        = 'vanilla',
-  $manage_java   = true,
-  $heap_size     = '1024',
-  $heap_start    = '256') {
+  $user = 'minecraft',
+  $group = 'minecraft',
+  $install_dir = '/opt/minecraft',
+  $source = 'vanilla',
+  $manage_java = true,
+  $heap_size = '1024',
+  $heap_start = '256',
+  $generator_settings = '',
+  $op_permisison_level = '4',
+  $allow_nether = 'true',
+  $level_name = 'world',
+  $enable_query = 'false',
+  $allow_flight = 'false',
+  $announce_player_achievments = 'true',
+  $server_port = '25565',
+  $level_type = "DEFAULT",
+  $enable_rcon = 'false',
+  $force_gamemode = 'false',
+  $level_seed = '',
+  $server_ip = '',
+  $max_build_height = '256',
+  $spawn_nps = 'true',
+  $white_list = 'false',
+  $spawn_animals = 'true',
+  $snooper_enabled = 'true',
+  $hardcore = 'false',
+  $online_mode = 'true',
+  $resource_pack = '',
+  $pvp = 'true',
+  $difficulty = '1',
+  $enable_command_block = 'false',
+  $player_idle_timeout = '0',
+  $gamemode = '0',
+  $max_players = '20',
+  $spawn_monsters = 'true',
+  $view_distance = '10',
+  $generate_structures = 'true',
+  $motd = 'A Minecraft Server') {
 
   class { 'minecraft::packages':
     before => Service['minecraft']
@@ -31,6 +62,8 @@ class minecraft(
   }
 
   class { 'minecraft::settings': }
+
+  class { 'minecraft::server_prop': }
 
   class { 'minecraft::source': }
 
