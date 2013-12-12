@@ -29,7 +29,7 @@ class minecraft::params {
   $allow_flight = 'false'
   $announce_achievments = 'true'
   $server_port = '25565'
-  $level_type = "DEFAULT"
+  $level_type = 'DEFAULT'
   $enable_rcon = 'false'
   $force_gamemode = 'false'
   $level_seed = ''
