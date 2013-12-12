@@ -1,5 +1,7 @@
 class minecraft::settings {
 
+  include minecraft::server_prop
+
   file { "${minecraft::install_dir}/ops.txt":
     ensure => present,
     owner  => $minecraft::user,
