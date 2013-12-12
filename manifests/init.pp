@@ -63,7 +63,9 @@ class minecraft(
 
   class { 'minecraft::settings': }
 
-  class { 'minecraft::server_prop': }
+  class { 'minecraft::server_prop':
+     before => Service['minecraft']
+  }
 
   class { 'minecraft::source': }
 
