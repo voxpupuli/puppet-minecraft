@@ -1,25 +1,40 @@
-# Definition: minecraft::server_prop
-#
-# This definition sets a configuration option in the Minecraft
-# server.properties file
-#
-# Parameters:
-# - $value: What the property should be set to
-#
-# Sample Usage:
-#
-#  minecraft::server_prop { 'spawn-monsters':
-#    value => 'true'
-#  }
-#
-define minecraft::server_prop (
-  $value,
-)
-{
-  file_line { $name:
-    path   => "${minecraft::homedir}/server.properties",
-    line   => "${name}=${value}",
-    match  => "${name}=.*",
-    notify => Service['minecraft'],
+class minecraft::server_prop (
+  $generator_settings = '',
+  $op_permisison_level = '4',
+  $allow_nether = 'true',
+  $level_name = 'world',
+  $enable_query = 'false',
+  $allow_flight = 'false',
+  $announce_player_achievments = 'true',
+  $server_port = '25565',
+  $level_type = "DEFAULT",
+  $enable_rcon = 'false',
+  $force_gamemode = 'false',
+  $level_seed = '',
+  $server_ip = '',
+  $max_build_height = '256',
+  $spawn_nps = 'true',
+  $white_list = 'false',
+  $spawn_animals = 'true',
+  $snooper_enabled = 'true',
+  $hardcore = 'false',
+  $online_mode = 'true',
+  $resource_pack = '',
+  $pvp = 'true',
+  $difficulty = '1',
+  $enable_command_block = 'false',
+  $player_idle_timeout = '0',
+  $gamemode = '0',
+  $max_players = '20',
+  $spawn_monsters = 'true',
+  $view_distance = '10',
+  $generate_structures = 'true',
+  $motd = 'A Minecraft Server') {
+
+  file { 'server.properties':
+    ensure  => file,
+    path    => "${minecraft::homedir}/server.properties",
+    content => template('minecraft/server.properties.erb'),
   }
 }
+
