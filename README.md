@@ -1,9 +1,3 @@
-# Fork of [branan/minecraft](https://forge.puppetlabs.com/branan/minecraft)
-I went ahead and re-factored Branan's Mincraft Puppet module because I 
-wanted to be able to specify a bukkit or vanilla install. I also plan to
-replace the init script with Ahtenus's
-[minecraft-init](https://github.com/Ahtenus/minecraft-init) project.
-
 # Puppet Module for Minecraft
 
 `puppet-minecraft` installs and configures your Minecraft server with Puppet!
@@ -14,36 +8,53 @@ The simplest possible usage is
 
     class { 'minecraft': }
 
+This entire class is parameterized, fully specified in `minecraft::params`.
+
 Parameters are available which control how the Minecraft installation
 behaves:
 
   * `user`: The user account for the Minecraft service
   * `group`: The user group for the Minecraft service
-  * `homedir`: The directory in which Minecraft stores its data
+  * `install_dir`: The directory in which Minecraft stores its data
   * `manage_java`: Should this module manage the `java` package?
-  * `manage_screen`: Should this module manage the `screen` package?
-  * `manage_curl`: Should this module manage the `curl` package?
   * `heap_size`: The maximum Java heap size for the Minecraft service in megabytes
-  * `heap_start`: The initial Java heap size for the Minecraft service in megabytes`
+  * `heap_start`: The initial Java heap size for the Minecraft service in megabytes
 
-## Server configuration
+### Minecraft Versions / Bukkit Builds
 
-Full configuration of the Minecraft server is supported. Simply use
-the `minecraft::server_prop` type.
+A particular version of Minecraft server can be downloaded by
+specifying the `version` parameter. Latest version as of this writing
+is 1.7.4.
 
-    minecraft::server_prop { 'spawn-monsters':
-      value => 'true'
-    }
+If [CraftBukkit](http://dl.bukkit.org/downloads/craftbukkit/) is
+prefered, simply set the parameter `$source` to 'bukkit' (note that
+source can also be set to a URL for a minecraft.jar download). If set,
+`$version` is ignored, and `$bukkit_build` is used to specify
+recommended (leave blank as ''), 'beta', or 'dev'.
 
-Consult your favorite Minecraft resource for the full list of server
-properties.
+### Server configuration
 
-## Managing players
+Full configuration of the Minecraft server is supported. Simply
+specify the parameter with the server setting when declaring the
+class:
 
-This module includes several Puppet defines to allow managing the
-players on your server
+    class { 'minecraft':
+      motd => 'Managed by Puppet!'
+	}
 
-  * `minecraft::op { $player: }`: Add `$player` to the auto-op list
-  * `minecraft::whitelist { $player: }`: Add `$player` to the server whitelist
-  * `minecraft::ban { $player: }`: Add `$player` to the server ban list
-  * `minecraft::ipban { $ipaddr: }`: Add `$ipaddr` to the server ip-ban list
+Note that the server property name will use an underscore
+instead of a dash, and may not exactly match the `server.properties`
+name. See `minecraft::params` for more info.
+
+### Managing players
+
+This module manages the Minecraft player settings through
+templates. To add players to a particular list, declare an array of
+them (even if only one):
+
+    class { 'minecraft':
+	  ops						=> [ 'me' ],
+	  banned_players			=> [ 'you' ],
+	  banned_ips				=> [ '127.0.0.1' ], # Don't actually do this
+	  white_list_players		=> [ 'my_best_friend' ] # Minecraft auto-includes ops
+	}
