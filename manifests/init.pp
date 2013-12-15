@@ -8,9 +8,13 @@ class minecraft(
   $group = $minecraft::params::group,
   $install_dir = $minecraft::params::install_dir,
   $source = $minecraft::params::source,
+  $version = $minecraft::params::version,
+  $bukkit_build = $minecraft::params::bukkit_build,
   $manage_java = $minecraft::params::manage_java,
   $heap_size = $minecraft::params::heap_size,
   $heap_start = $minecraft::params::heap_start,
+
+
   $generator_settings = $minecraft::params::generator_settings,
   $op_permisison_level = $minecraft::params::op_permission_level,
   $allow_nether = $minecraft::params::allow_nether,

@@ -17,6 +17,8 @@ class minecraft::params {
   $group = 'minecraft'
   $install_dir = '/opt/minecraft'
   $source = 'vanilla'
+  $version = '1.7.4'
+  $bukkit_build = ''
   $manage_java = true
   $heap_size = '1024'
   $heap_start = '256'
