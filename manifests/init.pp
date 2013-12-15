@@ -13,6 +13,10 @@ class minecraft(
   $manage_java          = $minecraft::params::manage_java,
   $heap_size            = $minecraft::params::heap_size,
   $heap_start           = $minecraft::params::heap_start,
+  $ops                  = $minecraft::params::ops,
+  $banned_players       = $minecraft::params::banned_players,
+  $banned_ips           = $minecraft::params::banned_ips,
+  $white_list_players   = $minecraft::params::white_list_players,
 
   $generator_settings   = $minecraft::params::generator_settings,
   $op_permisison_level  = $minecraft::params::op_permission_level,

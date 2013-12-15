@@ -1,12 +1,12 @@
 class minecraft::user {
 
-  group { "$group":
+  group { $group:
     ensure => present,
   }
 
-  user { "$user":
-    gid        => "$group",
-    home       => "$install_dir",
+  user { $user:
+    gid        => $group,
+    home       => $install_dir,
     managehome => true,
   }
 }

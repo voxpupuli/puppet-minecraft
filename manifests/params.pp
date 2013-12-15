@@ -8,6 +8,10 @@ class minecraft::params {
   $manage_java          = true        # Manage jre package
   $heap_size            = '1024'      # The maximum Java heap size in MB
   $heap_start           = '256'       # The initial Java heap size in MB
+  $ops                  = []          # Must be arrays for template
+  $banned_players       = []
+  $banned_ips           = []
+  $white_list_players   = []
 
   # The following are server.properties attributes, see
   # http://minecraft.gamepedia.com/Server.properties for information
