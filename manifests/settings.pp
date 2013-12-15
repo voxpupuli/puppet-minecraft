@@ -1,38 +1,38 @@
 class minecraft::settings {
 
-  file { "${minecraft::install_dir}/server.properties":
+  file { "${install_dir}/server.properties":
     ensure  => file,
     content => template('minecraft/server.properties.erb'),
-    owner   => $minecraft::user,
-    group   => $minecraft::group,
+    owner   => $user,
+    group   => $group,
     mode    => '0664',
   }
 
-  file { "${minecraft::install_dir}/ops.txt":
+  file { "${install_dir}/ops.txt":
     ensure => present,
-    owner  => $minecraft::user,
-    group  => $minecraft::group,
+    owner  => $user,
+    group  => $group,
     mode   => '0664',
   } -> Minecraft::Op <| |>
 
-  file { "${minecraft::install_dir}/banned-players.txt":
+  file { "${install_dir}/banned-players.txt":
     ensure => present,
-    owner  => $minecraft::user,
-    group  => $minecraft::group,
+    owner  => $user,
+    group  => $group,
     mode   => '0664',
   } -> Minecraft::Ban <| |>
 
-  file { "${minecraft::install_dir}/banned-ips.txt":
+  file { "${install_dir}/banned-ips.txt":
     ensure => present,
-    owner  => $minecraft::user,
-    group  => $minecraft::group,
+    owner  => $user,
+    group  => $group,
     mode   => '0664',
   } -> Minecraft::Ipban <| |>
 
-  file { "${minecraft::install_dir}/white-list.txt":
+  file { "${install_dir}/white-list.txt":
     ensure => present,
-    owner  => $minecraft::user,
-    group  => $minecraft::group,
+    owner  => $user,
+    group  => $group,
     mode   => '0664',
   } -> Minecraft::Whitelist <| |>
 }
