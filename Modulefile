@@ -8,5 +8,4 @@ description 'Install and manage a Minecraft server'
 project_page 'https://github.com/andschwa/puppet-module-minecraft'
 
 dependency 'maestrodev/wget', '>= 1.1.0'
-dependency 'puppetlabs/stdlib', '>= 2.2.0'
 dependency 'puppetlabs/java', '>= 0.1.6'
