@@ -1,6 +1,6 @@
 class minecraft::packages {
 
-  if $manage_java {
+  if $minecraft::manage_java {
     class { 'java':
       distribution => 'jre',
     }

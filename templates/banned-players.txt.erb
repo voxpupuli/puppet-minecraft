@@ -1,3 +1,3 @@
-<% @banned_players.each do |player| -%>
+<% scope['minecraft::banned_players'].each do |player| -%>
 <%= player %>
 <% end -%>

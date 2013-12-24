@@ -6,10 +6,10 @@ class minecraft::settings {
   define settings {
     file { $title :
       ensure  => file,
-      path    => "${install_dir}/${title}",
+      path    => "${minecraft::install_dir}/${title}",
       content => template("minecraft/${title}.erb"),
-      owner   => $user,
-      group   => $group,
+      owner   => $minecraft::user,
+      group   => $minecraft::group,
       mode    => '0664',
     }
   }
