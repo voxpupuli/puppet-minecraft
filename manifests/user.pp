@@ -6,9 +6,6 @@ class minecraft::user {
     gid        => $group,
     home       => $install_dir,
     managehome => true,
-  } file { $install_dir:
-    ensure     => directory,
-    owner      => $user,
   }
 
 }
