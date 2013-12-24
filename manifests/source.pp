@@ -4,7 +4,7 @@ class minecraft::source {
     $bukkit_build = "-${minecraft::bukkit_build}"
   }
 
-  $bukkit_source = "http://cbukk.it/craftbukkit${minecraft::bukkit_build}.jar"
+  $bukkit_source = "http://cbukk.it/craftbukkit${bukkit_build}.jar"
 
   $vanilla_source = "https://s3.amazonaws.com/Minecraft.Download/versions/${minecraft::version}/minecraft_server.${minecraft::version}.jar"
 
