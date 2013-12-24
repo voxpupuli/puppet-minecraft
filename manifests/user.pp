@@ -7,7 +7,7 @@ class minecraft::user {
   user { $minecraft::user:
     ensure     => present,
     gid        => $minecraft::group,
-    home       => $miencraft::install_dir,
+    home       => $minecraft::install_dir,
     managehome => true,
     require => Group['minecraft']
   }
