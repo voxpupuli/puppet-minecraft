@@ -8,7 +8,7 @@ The simplest possible usage is
 
     class { 'minecraft': }
 
-This entire class is parameterized, fully specified in `minecraft::params`.
+This entire class is parameterized, see minecraft class for details.
 
 Parameters are available which control how the Minecraft installation
 behaves:
@@ -44,7 +44,7 @@ class:
 
 Note that the server property name will use an underscore
 instead of a dash, and may not exactly match the `server.properties`
-name. See `minecraft::params` for more info.
+name.
 
 ### Managing players
 
