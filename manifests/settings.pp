@@ -1,8 +1,5 @@
 class minecraft::settings {
 
-  $files = [ 'server.properties', 'ops.txt', 'banned-players.txt',
-             'banned-ips.txt', 'white-list.txt' ]
-
   define settings {
     file { $title :
       ensure  => file,
@@ -14,6 +11,21 @@ class minecraft::settings {
     }
   }
 
-  settings { $files: }
+  settings { 'server.properties': }
 
+  if $minecraft::ops != [] {
+    settings {'ops.txt': }
+  }
+
+  if $minecraft::banned_players != [] {
+    settings {'banned-players.txt': }
+  }
+
+  if $minecraft::banned_ips != [] {
+    settings {'banned-ips.txt': }
+  }
+
+  if $minecraft::white_list_players != [] {
+    settings {'white-list.txt': }
+  }
 }

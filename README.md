@@ -55,6 +55,14 @@ them (even if only one):
     class { 'minecraft':
 	  ops						=> [ 'me' ],
 	  banned_players			=> [ 'you' ],
-	  banned_ips				=> [ '127.0.0.1' ], # Don't actually do this
+	  banned_ips				=> [ '127.0.0.1' ],     # Don't actually do this
 	  white_list_players		=> [ 'my_best_friend' ] # Minecraft auto-includes ops
 	}
+
+Note that if one of these parameters is left as an empty array, Puppet
+will not manage the corresponding file, allowing you to manage it via
+commands in Minecraft. However, if specified, Puppet will manage the
+file, and overwrite any manual changes on the next application of
+Puppet. (There is also the "replace" attribute on the Puppet file
+resource, but this is not what we want because, if the file is being
+managed, we want changes in the manifest to be updated in the files.)
