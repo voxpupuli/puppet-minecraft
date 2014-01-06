@@ -1,5 +1,5 @@
 name    'puppet-minecraft'
-version '2.0.0'
+version '2.0.1'
 source  'https://github.com/branan/puppet-module-minecraft'
 author  'Branan Purvine-Riley, Andrew Schwartzmeyer'
 license 'Apache License 2.0'
