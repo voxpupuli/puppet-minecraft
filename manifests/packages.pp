@@ -6,11 +6,15 @@ class minecraft::packages {
     }
   }
 
-  package { 'screen':
-    ensure => present
+  if ! defined(Package['screen']) {
+    package { 'screen':
+      ensure => present
+      }
   }
 
-  package { 'curl':
-    ensure => present
+  if ! defined(Package['curl']) {
+    package { 'curl':
+      ensure => present
+    }
   }
 }
