@@ -20,11 +20,6 @@ class minecraft::source {
   wget::fetch { 'minecraft':
     source      => $download,
     destination => "${minecraft::install_dir}/minecraft_server.jar",
-  }
-
-  file { "${minecraft::install_dir}/plugins":
-    ensure => directory,
-    owner  => $minecraft::user,
-    group  => $minecraft::group,
+    require     => User[$minecraft::user],
   }
 }

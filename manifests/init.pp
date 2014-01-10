@@ -1,17 +1,12 @@
-# Class: minecraft
-#
-# This class installs and configures a Minecraft server
-#
-
 class minecraft(
-  $user                 = 'minecraft', # The user account for the Minecraft service
-  $group                = 'minecraft', # The user group for the Minecraft service
-  $install_dir          = '/opt/minecraft',
-  $source               = '1.7.4',     # Minecraft (semvar) or CraftBukkit ('recommended', 'beta', or 'dev'), or direct source
-  $manage_java          = true,        # Manage JRE package
-  $heap_size            = '1024',      # The maximum Java heap size in MB
-  $heap_start           = '256',       # The initial Java heap size in MB
-  $ops                  = [],          # Must be arrays for template
+  $user                 = 'minecraft',      # The user account for the Minecraft service
+  $group                = 'minecraft',      # The user group for the Minecraft service
+  $install_dir          = '/opt/minecraft', # Owned by user:group
+  $source               = '1.7.4',          # Minecraft (semvar) or CraftBukkit ('recommended', 'beta', or 'dev'), or direct source
+  $manage_java          = true,             # Manage JRE package
+  $heap_size            = '1024',           # The maximum Java heap size in MB
+  $heap_start           = '256',            # The initial Java heap size in MB
+  $ops                  = [],               # Must be arrays for template
   $banned_players       = [],
   $banned_ips           = [],
   $white_list_players   = [],
@@ -51,26 +46,9 @@ class minecraft(
   $spawn_protection     = 16,
   $motd                 = 'A Minecraft Server') {
 
-  class { 'minecraft::packages':
-    before => Service['minecraft']
-  }
-
-  class { 'minecraft::user':
-    before => [ Class['minecraft::settings'],
-                Class['minecraft::source'] ]
-  }
-
-  class { 'minecraft::settings': 
-     before => Service['minecraft']
-  }
-
-  class { 'minecraft::source': 
-    before => Service['minecraft']
-  }
-
-  class { 'minecraft::start_script':
-    before => Class['minecraft::service']
-  }
-
-  class { 'minecraft::service': }
+  include minecraft::packages
+  include minecraft::service
+  include minecraft::settings
+  include minecraft::source
+  include minecraft::user
 }

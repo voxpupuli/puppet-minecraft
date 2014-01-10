@@ -6,9 +6,10 @@
 
 The simplest possible usage is
 
-    class { 'minecraft': }
+    include minecraft
 
-This entire class is parameterized, see minecraft class for details.
+This entire class is parameterized, see the minecraft class for
+details.
 
 Parameters are available which control how the Minecraft installation
 behaves:
@@ -17,8 +18,10 @@ behaves:
   * `group`: The user group for the Minecraft service
   * `install_dir`: The directory in which Minecraft stores its data
   * `manage_java`: Should this module manage the `java` package?
-  * `heap_size`: The maximum Java heap size for the Minecraft service in megabytes
-  * `heap_start`: The initial Java heap size for the Minecraft service in megabytes
+  * `heap_size`: The maximum Java heap size for the Minecraft service
+    in megabytes
+  * `heap_start`: The initial Java heap size for the Minecraft service
+    in megabytes
 
 ### Minecraft Versions / CraftBukkit Builds
 
@@ -69,3 +72,9 @@ file, and overwrite any manual changes on the next application of
 Puppet. (There is also the "replace" attribute on the Puppet file
 resource, but this is not what we want because, if the file is being
 managed, we want changes in the manifest to be updated in the files.)
+
+### Adding CraftBukkit Plugins
+
+CraftBukkit plugins can be installed by using the defined resource
+`minecraft::plugin`. You must specify the plugin name (lacking the
+'.jar' file extension) and the complete URL for the download source.

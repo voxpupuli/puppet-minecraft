@@ -8,6 +8,7 @@ class minecraft::settings {
       owner   => $minecraft::user,
       group   => $minecraft::group,
       mode    => '0664',
+      require => User[$minecraft::user],
     }
   }
 

@@ -1,6 +1,6 @@
 define minecraft::plugin($plugin_name = $title, $source) {
 
-  if $plugin_name =~ /.*\.jar$/ {
+  if $plugin_name =~ /^.*\.jar$/ {
     fail("minecraft plugin name ${plugin_name} must not end in '.jar'")
   }
   
@@ -8,6 +8,6 @@ define minecraft::plugin($plugin_name = $title, $source) {
     source      => $source,
     destination => "${minecraft::install_dir}/plugins/${plugin_name}.jar",
     notify      => Service['minecraft'],
-    require     => Class['minecraft::source']
+    require     => File["${minecraft::install_dir}/plugins"],
   }
 }
