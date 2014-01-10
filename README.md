@@ -1,6 +1,15 @@
-# Puppet Module for Minecraft
+# Puppet Module for Minecraft v2.1
 
-`puppet-minecraft` installs and configures your Minecraft server with Puppet!
+`puppet-minecraft` installs and configures your Minecraft or
+CraftBukkit server with Puppet!
+
+This is a derivative work of Branan Purvine-Riley's
+[Minecraft module](http://forge.puppetlabs.com/branan/minecraft), with
+improvements including: version selection, CraftBukkit support, a
+plugin resource, and settings managed via templates. It is released
+under the original Apache License, Version 2.0.
+
+This module has been tested on Ubuntu Server 12.04.3 with Puppet 3.4.1.
 
 ## Usage
 
@@ -78,3 +87,9 @@ managed, we want changes in the manifest to be updated in the files.)
 CraftBukkit plugins can be installed by using the defined resource
 `minecraft::plugin`. You must specify the plugin name (lacking the
 '.jar' file extension) and the complete URL for the download source.
+
+### Copyright
+
+My contributions as indicated by the git repository's history are
+Copyright 2014 Andrew Schwartzmeyer, and as stated above, are released
+under the included license.
