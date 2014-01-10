@@ -20,17 +20,20 @@ behaves:
   * `heap_size`: The maximum Java heap size for the Minecraft service in megabytes
   * `heap_start`: The initial Java heap size for the Minecraft service in megabytes
 
-### Minecraft Versions / Bukkit Builds
+### Minecraft Versions / CraftBukkit Builds
 
 A particular version of Minecraft server can be downloaded by
-specifying the `version` parameter. Latest version as of this writing
-is 1.7.4.
+specifying the `source` parameter. This parameter accepts a semantic
+version (representing a vanilla Minecraft server), or for a
+[CraftBukkit](http://dl.bukkit.org/downloads/craftbukkit/)
+installation, one of 'recommended', 'beta', or 'dev'. Latest vanilla
+version as of this writing is 1.7.4.
 
-If [CraftBukkit](http://dl.bukkit.org/downloads/craftbukkit/) is
-prefered, simply set the parameter `$source` to 'bukkit' (note that
-source can also be set to a URL for a minecraft.jar download). If set,
-`$version` is ignored, and `$bukkit_build` is used to specify
-recommended (leave blank as ''), 'beta', or 'dev'.
+Please note that once a JAR file (the server) has been downloaded to
+`install_dir`, if you want to switch, you will need to manually remove
+it so that the 'wget::fetch' resource can update; also beware
+incompatibilities among Minecraft and CraftBukkit versions with world
+files, settings, etc.
 
 ### Server configuration
 

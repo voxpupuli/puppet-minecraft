@@ -7,10 +7,8 @@ class minecraft(
   $user                 = 'minecraft', # The user account for the Minecraft service
   $group                = 'minecraft', # The user group for the Minecraft service
   $install_dir          = '/opt/minecraft',
-  $source               = 'vanilla',   # 'vanilla', 'bukkit', or direct source for wget
-  $version              = '1.7.4',     # Minecraft version to download
-  $bukkit_build         = '',          # '' (recommended), 'beta', or 'dev' build
-  $manage_java          = true,        # Manage jre package
+  $source               = '1.7.4',     # Minecraft (semvar) or CraftBukkit ('recommended', 'beta', or 'dev'), or direct source
+  $manage_java          = true,        # Manage JRE package
   $heap_size            = '1024',      # The maximum Java heap size in MB
   $heap_start           = '256',       # The initial Java heap size in MB
   $ops                  = [],          # Must be arrays for template
