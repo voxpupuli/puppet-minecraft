@@ -11,6 +11,7 @@ class minecraft::service {
 
   service { 'minecraft':
     ensure    => running,
+    enable    => $minecraft::autostart,
     subscribe => File[ 'server.properties', 'minecraft_init' ],
   }
 }
