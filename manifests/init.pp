@@ -7,13 +7,14 @@ class minecraft(
   $manage_java          = true,             # Manage JRE package
   $heap_size            = '1024',           # The maximum Java heap size in MB
   $heap_start           = '256',            # The initial Java heap size in MB
-  $ops                  = [],               # Must be arrays for template
-  $banned_players       = [],
-  $banned_ips           = [],
-  $white_list_players   = [],
+  $ops                  = undef,
+  $banned_players       = undef,
+  $banned_ips           = undef,
+  $white_list_players   = undef,
 
   # The following are server.properties attributes, see
   # http://minecraft.gamepedia.com/Server.properties for information
+  # Empty strings are represented as empty in templates, unlike undef
   $generator_settings   = '',
   $op_permisison_level  = 4,
   $allow_nether         = true,

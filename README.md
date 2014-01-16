@@ -59,28 +59,50 @@ class:
 
 Note that the server property name will use an underscore
 instead of a dash, and may not exactly match the `server.properties`
-name.
+name. Also, refrain from using 'undef' for the server properties, as
+Puppet will place 'undef' as a string in the template; instead, use
+the emptry string: ''.
 
 ### Managing players
 
 This module manages the Minecraft player settings through
 templates. To add players to a particular list, declare an array of
-them (even if only one):
+them:
 
     class { 'minecraft':
-	  ops						=> [ 'me' ],
-	  banned_players			=> [ 'you' ],
-	  banned_ips				=> [ '127.0.0.1' ],     # Don't actually do this
+	  ops						=> 'me',
+	  banned_players			=> [ 'griefer', 'badboy' ],
+	  banned_ips				=> '127.0.0.1',         # Don't actually do this
 	  white_list_players		=> [ 'my_best_friend' ] # Minecraft auto-includes ops
 	}
 
-Note that if one of these parameters is left as an empty array, Puppet
-will not manage the corresponding file, allowing you to manage it via
+Note that when any of these parameters is set to undef, Puppet will
+not manage the corresponding file, allowing you to manage it via
 commands in Minecraft. However, if specified, Puppet will manage the
 file, and overwrite any manual changes on the next application of
 Puppet. (There is also the "replace" attribute on the Puppet file
 resource, but this is not what we want because, if the file is being
 managed, we want changes in the manifest to be updated in the files.)
+
+To enable the whitelist, you must both set it to true in the class,
+and add players to the whitelist here, as they affect separate
+templates. Additionally, blacklists (banned IPs/players) is pointless
+if the whitelist is enabled, and is only shown here concurrently for
+demonstration purposes.
+
+### Java
+
+If `manage_java` is true, this module will use
+[Puppetlabs' Java module](https://github.com/puppetlabs/puppetlabs-java)
+to install the necessary JRE.
+
+Note that for Ubuntu 12.04, there is currently a
+[bug](https://bugs.launchpad.net/ubuntu/+source/tzdata/+bug/1212319)
+with openjdk-7-jre-headless because of a broken dependency (tzdata)
+that likely has been upgraded. To fix, manually install the
+aforementioned Java package using aptitude (not apt-get), and accept
+the conflict resolution that downgrades tzdata (may be the second
+choice).
 
 ### Adding CraftBukkit Plugins
 
