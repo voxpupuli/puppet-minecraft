@@ -1,5 +1,5 @@
 name    'andschwa-minecraft'
-version '2.1.1'
+version '2.1.2'
 source  'https://github.com/andschwa/puppet-minecraft'
 author  'Branan Purvine-Riley and Andrew Schwartzmeyer'
 license 'Apache License 2.0'
