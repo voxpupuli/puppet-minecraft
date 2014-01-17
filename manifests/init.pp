@@ -49,8 +49,8 @@ class minecraft(
   $motd                 = 'A Minecraft Server') {
 
   include minecraft::packages
+  include minecraft::properties
   include minecraft::service
-  include minecraft::settings
   include minecraft::source
   include minecraft::user
 }

@@ -1,6 +1,6 @@
-class minecraft::settings {
+class minecraft::properties {
 
-  define settings {
+  define server_setting {
     file { $title :
       ensure  => file,
       path    => "${minecraft::install_dir}/${title}",
@@ -12,21 +12,21 @@ class minecraft::settings {
     }
   }
 
-  settings { 'server.properties': }
+  server_setting { 'server.properties': }
 
   if $minecraft::ops != undef {
-    settings {'ops.txt': }
+    server_setting { 'ops.txt': }
   }
 
   if $minecraft::banned_players != undef {
-    settings {'banned-players.txt': }
+    server_setting { 'banned-players.txt': }
   }
 
   if $minecraft::banned_ips != undef {
-    settings {'banned-ips.txt': }
+    server_setting { 'banned-ips.txt': }
   }
 
   if $minecraft::white_list_players != undef {
-    settings {'white-list.txt': }
+    server_setting { 'white-list.txt': }
   }
 }
