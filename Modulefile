@@ -1,5 +1,5 @@
 name    'andschwa-minecraft'
-version '2.1.3'
+version '2.1.4'
 source  'https://github.com/andschwa/puppet-minecraft'
 author  'Branan Purvine-Riley and Andrew Schwartzmeyer'
 license 'Apache License 2.0'
@@ -9,3 +9,4 @@ project_page 'https://github.com/andschwa/puppet-minecraft'
 
 dependency 'maestrodev/wget', '>= 1.1.0'
 dependency 'puppetlabs/java', '>= 0.1.6'
+dependency 'puppetlabs/stdlib', '>=  4.1.0'

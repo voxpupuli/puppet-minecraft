@@ -7,15 +7,6 @@ class minecraft::packages {
     }
   }
 
-  if ! defined( Package['screen'] ) {
-    package { 'screen':
-      ensure => present
-      }
-  }
-
-  if ! defined( Package['curl'] ) {
-    package { 'curl':
-      ensure => present
-    }
-  }
+  $packages = [ 'screen', 'curl' ]
+  ensure_resource('package', $packages, {'ensure' => 'present' })
 }
