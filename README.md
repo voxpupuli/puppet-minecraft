@@ -150,6 +150,14 @@ minecraft::plugin { 'dynmap':
 }
 ```
 
+Or using Hiera like this:
+
+```yaml
+minecraft::plugins:
+  dynmap:
+    source: http://dev.bukkit.org/media/files/757/982/dynmap-1.9.1.jar
+```
+
 Once enabled, a web-based map of the server will be available at
 [localhost:8123](http://localhost:8123). James Fryman's
 [nginx module](http://forge.puppetlabs.com/jfryman/nginx) could then

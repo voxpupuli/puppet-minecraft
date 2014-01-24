@@ -7,6 +7,7 @@ class minecraft(
   $manage_java          = true,             # Manage the JRE package
   $heap_size            = '1024',           # The maximum Java heap size in MB
   $heap_start           = '256',            # The initial Java heap size in MB
+  $plugins              = {},               # Hash of plugins
   $ops                  = undef,
   $banned_players       = undef,
   $banned_ips           = undef,
@@ -53,4 +54,6 @@ class minecraft(
   include minecraft::service
   include minecraft::source
   include minecraft::user
+
+  create_resources('minecraft::plugin', $plugins)
 }
