@@ -7,6 +7,5 @@ class minecraft::packages {
     }
   }
 
-  $packages = [ 'screen', 'curl' ]
-  ensure_resource('package', $packages, {'ensure' => 'present' })
+  ensure_resource('package', 'screen', {'ensure' => 'present' })
 }
