@@ -13,12 +13,14 @@ This module has been tested on Ubuntu Server 12.04.3 with Puppet 3.4.1.
 
 ## Usage
 
-The simplest possible usage is
+The simplest possible usage is:
 
-    include minecraft
+```puppet
+include minecraft
+```
 
-This entire class is parameterized, see the minecraft class for
-details.
+This entire class is parameterized (see the minecraft class for
+details), and can be configured through hiera.
 
 Parameters are available which control how the Minecraft installation
 behaves:
@@ -26,7 +28,10 @@ behaves:
   * `user`: The user account for the Minecraft service
   * `group`: The user group for the Minecraft service
   * `install_dir`: The directory in which Minecraft stores its data
-  * `manage_java`: Should this module manage the `java` package?
+  * `source`: Minecraft (semvar) or CraftBukkit ('recommended',
+    'beta', or 'dev'), or direct source (URL for `wget`)
+  * `autostart`: Start the service at boot
+  * `manage_java`: Manage the JRE package
   * `heap_size`: The maximum Java heap size for the Minecraft service
     in megabytes
   * `heap_start`: The initial Java heap size for the Minecraft service
@@ -43,7 +48,7 @@ version as of this writing is 1.7.4.
 
 Please note that once a JAR file (the server) has been downloaded to
 `install_dir`, if you want to switch, you will need to manually remove
-it so that the 'wget::fetch' resource can update; also beware
+it so that the `wget::fetch` resource can update; also beware
 incompatibilities among Minecraft and CraftBukkit versions with world
 files, settings, etc.
 
@@ -53,15 +58,36 @@ Full configuration of the Minecraft server is supported. Simply
 specify the parameter with the server setting when declaring the
 class:
 
-    class { 'minecraft':
-      motd => 'Managed by Puppet!'
-	}
+```puppet
+class { 'minecraft':
+  source     => 'dev',
+  heap_size  => 2048,
+  difficulty => 2,
+  motd       => 'Managed by Puppet!',
+  ops        => [ 'op1', 'op2' ]
+}
+```
 
-Note that the server property name will use an underscore
-instead of a dash, and may not exactly match the `server.properties`
-name. Also, refrain from using 'undef' for the server properties, as
-Puppet will place 'undef' as a string in the template; instead, use
-the emptry string: ''.
+[Hiera](http://docs.puppetlabs.com/hiera/1/puppet.html) configuration
+can also be done. In [YAML](http://www.yaml.org/):
+
+```yaml
+minecraft::source: 'dev'
+minecraft::heap_size: 2048
+minecraft::difficulty: 2
+minecraft::motd: 'Managed by Puppet, with Hiera!'
+minecraft::ops: 
+  - 'op1'
+  - 'op2'
+```
+
+Note that the server property name will use an underscore instead of a
+dash, and may not exactly match the `server.properties` name. Also,
+refrain from using 'undef' for the server properties, as Puppet will
+place 'undef' as a string in the template; instead, use the emptry
+string: ''. (It's either this or add a bunch of template logic to
+check for an undef value first, for every parameter, do it and Pull
+Request if you'd like.)
 
 ### Managing players
 
@@ -69,12 +95,14 @@ This module manages the Minecraft player settings through
 templates. To add players to a particular list, declare an array of
 them:
 
-    class { 'minecraft':
-	  ops						=> 'me',
-	  banned_players			=> [ 'griefer', 'badboy' ],
-	  banned_ips				=> '127.0.0.1',         # Don't actually do this
-	  white_list_players		=> [ 'my_best_friend' ] # Minecraft auto-includes ops
-	}
+```puppet
+class { 'minecraft':
+  ops                => 'me',
+  banned_players     => [ 'griefer', 'badboy' ],
+  banned_ips         => '127.0.0.1',         # Don't actually do this
+  white_list_players => [ 'my_best_friend' ] # Minecraft auto-includes ops
+}
+```
 
 Note that when any of these parameters is set to undef, Puppet will
 not manage the corresponding file, allowing you to manage it via
@@ -94,7 +122,7 @@ demonstration purposes.
 
 If `manage_java` is true, this module will use
 [Puppetlabs' Java module](https://github.com/puppetlabs/puppetlabs-java)
-to install the necessary JRE.
+to install the necessary Java Runtime Environment.
 
 Note that for Ubuntu 12.04, there is currently a
 [bug](https://bugs.launchpad.net/ubuntu/+source/tzdata/+bug/1212319)
@@ -109,6 +137,53 @@ choice).
 CraftBukkit plugins can be installed by using the defined resource
 `minecraft::plugin`. You must specify the plugin name (lacking the
 '.jar' file extension) and the complete URL for the download source.
+
+#### Dynmap Example
+
+The
+[Dynmap plugin](http://www.minecraftforum.net/topic/1543523-dynmap-dynamic-web-based-maps-for-minecraft/)
+can be configured like this:
+
+```puppet
+minecraft::plugin { 'dynmap':
+  source => 'http://dev.bukkit.org/media/files/757/982/dynmap-1.9.1.jar'
+}
+```
+
+Once enabled, a web-based map of the server will be available at
+[localhost:8123](http://localhost:8123). James Fryman's
+[nginx module](http://forge.puppetlabs.com/jfryman/nginx) could then
+be used to proxy the server through
+[map.domain.tld](http://map.domain.tld) like thus:
+
+```puppet
+nginx::resource::vhost { 'map.domain.tld':
+  ensure               => present,
+  use_default_location => false,
+}
+
+nginx::resource::location { 'map.domain.tld':
+  ensure              => present,
+  vhost               => 'map.domain.tld',
+  location            => '/',
+  proxy               => 'http://localhost:8123',
+  location_cfg_append => {
+    'proxy_set_header' => 'Host $host',
+    }
+}
+```
+
+Note that Nginx setup is not within the scope of this module, and is
+simply provided as a tip.
+
+### Caveats
+
+This package uses
+[Puppetlabs' stdlib module](https://forge.puppetlabs.com/puppetlabs/stdlib)
+for the `ensure_resource` function, which it uses on the `screen`
+package (utilized for running the Minecraft server as a background
+service). This is currently the safest way to declare a
+possibly-conflicting dependency.
 
 ### Copyright
 
