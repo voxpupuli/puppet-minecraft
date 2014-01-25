@@ -166,19 +166,19 @@ be used to proxy the server through
 
 ```puppet
 nginx::resource::vhost { 'map.domain.tld':
-  ensure               => present,
-  use_default_location => false,
+  proxy            => 'http://localhost:8123',
+  proxy_set_header => [ 'Host $host' ],
 }
+```
 
-nginx::resource::location { 'map.domain.tld':
-  ensure              => present,
-  vhost               => 'map.domain.tld',
-  location            => '/',
-  proxy               => 'http://localhost:8123',
-  location_cfg_append => {
-    'proxy_set_header' => 'Host $host',
-    }
-}
+Or again in Hiera,
+
+```yaml
+nginx::nginx_vhosts:
+  map.domain.tld:
+    proxy: http://localhost:8123
+    proxy_set_header:
+	  - Host $host
 ```
 
 Note that Nginx setup is not within the scope of this module, and is
