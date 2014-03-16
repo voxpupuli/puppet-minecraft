@@ -1,4 +1,4 @@
-# Puppet Module for Minecraft v2.1
+# Puppet Module for Minecraft v2
 
 `puppet-minecraft` installs and configures your Minecraft or
 CraftBukkit server with Puppet!
@@ -9,7 +9,7 @@ improvements including: version selection, CraftBukkit support, a
 plugin resource, and settings managed via templates. It is released
 under the original Apache License, Version 2.0.
 
-This module has been tested on Ubuntu Server 12.04.3 with Puppet 3.4.1.
+This module has been tested on Ubuntu Server 12.04.4 with Puppet 3.4.3.
 
 ## Usage
 
@@ -41,16 +41,25 @@ behaves:
 
 A particular version of Minecraft server can be downloaded by
 specifying the `source` parameter. This parameter accepts a semantic
-version (representing a vanilla Minecraft server), or for a
-[CraftBukkit](http://dl.bukkit.org/downloads/craftbukkit/)
+version (representing a vanilla Minecraft server), a snapshot version,
+or for a [CraftBukkit](http://dl.bukkit.org/downloads/craftbukkit/)
 installation, one of 'recommended', 'beta', or 'dev'. Latest vanilla
-version as of this writing is 1.7.4.
+version as of this writing is 1.7.5.
 
 Please note that once a JAR file (the server) has been downloaded to
 `install_dir`, if you want to switch, you will need to manually remove
-it so that the `wget::fetch` resource can update; also beware
-incompatibilities among Minecraft and CraftBukkit versions with world
-files, settings, etc.
+it so that the `wget::fetch` resource can update; this is a _good
+thing_ as it means the tags (e.g. "recommended") will not auto-update
+your server. This is good because you must beware incompatibilities
+among Minecraft and CraftBukkit versions with world files, settings,
+etc, so backup and test thoroughly before you update. (At least rolling
+back to an old version is easy.)
+
+Speaking of old versions, prior to the release of Minecraft 1.6, the
+downloads were hosted at a different
+[location](http://assets.minecraft.net/), but since these are quite
+old, this module does not currently support it. Submit a Pull Request
+if you add support, or make an issue if you want me to do so.
 
 ### Server configuration
 
@@ -124,14 +133,6 @@ If `manage_java` is true, this module will use
 [Puppetlabs' Java module](https://github.com/puppetlabs/puppetlabs-java)
 to install the necessary Java Runtime Environment.
 
-Note that for Ubuntu 12.04, there is currently a
-[bug](https://bugs.launchpad.net/ubuntu/+source/tzdata/+bug/1212319)
-with openjdk-7-jre-headless because of a broken dependency (tzdata)
-that likely has been upgraded. To fix, manually install the
-aforementioned Java package using aptitude (not apt-get), and accept
-the conflict resolution that downgrades tzdata (may be the second
-choice).
-
 ### Adding CraftBukkit Plugins
 
 CraftBukkit plugins can be installed by using the defined resource
@@ -192,6 +193,12 @@ for the `ensure_resource` function, which it uses on the `screen`
 package (utilized for running the Minecraft server as a background
 service). This is currently the safest way to declare a
 possibly-conflicting dependency.
+
+### Testing
+
+Testing of this package occurs on an Ubuntu 12.04.4 LTS machine, using
+Puppet 3.4.3. This is made easy using
+[vagrant](http://www.vagrantup.com/), and my own [box]()
 
 ### Copyright
 
