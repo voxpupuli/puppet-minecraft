@@ -198,7 +198,8 @@ possibly-conflicting dependency.
 
 Testing of this package occurs on an Ubuntu 12.04.4 LTS machine, using
 Puppet 3.4.3. This is made easy using
-[vagrant](http://www.vagrantup.com/), and my own [box]()
+[vagrant](http://www.vagrantup.com/), and my own
+[box](https://vagrantcloud.com/andschwa/ubuntu-precise-latest-puppet).
 
 ### Copyright
 
