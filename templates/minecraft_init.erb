@@ -1,24 +1,24 @@
 #!/bin/bash
-# /etc/init.d/minecraft
+# /etc/init.d/minecraft.<%= scope['minecraft::server::servername'] %>
 
   ### BEGIN INIT INFO
-  # Provides:   minecraft
+  # Provides:   minecraft.<%= scope['minecraft::server::servername'] %>
   # Required-Start: $local_fs $remote_fs
   # Required-Stop:  $local_fs $remote_fs
   # Should-Start:   $network
   # Should-Stop:    $network
   # Default-Start:  2 3 4 5
   # Default-Stop:   0 1 6
-  # Short-Description:    Minecraft server
-  # Description:    Starts the minecraft server
+  # Short-Description:    Minecraft server (<%= scope['minecraft::server::servername'] %>)
+  # Description:    Starts the minecraft server named <%= scope['minecraft::server::servername'] %>
   ### END INIT INFO
 
 #Settings
 SERVICE='minecraft_server.jar'
-USERNAME="<%= scope['minecraft::user'] %>"
-MCPATH="<%= scope['minecraft::install_dir'] %>"
-MAX_HEAP="<%= scope['minecraft::heap_size'] %>"
-MIN_HEAP="<%= scope['minecraft::heap_start'] %>"
+USERNAME="<%= scope['minecraft::server::user'] %>"
+MCPATH="<%= scope['minecraft::server::install_dir'] %>"
+MAX_HEAP="<%= scope['minecraft::server::heap_size'] %>"
+MIN_HEAP="<%= scope['minecraft::server::heap_start'] %>"
 ## If you have more than one Minecraft instance to control, add additional MCPATH
 ## variables below
 # MCPATH2='/home/mcuser/minecraft2'
@@ -40,8 +40,8 @@ mc_start() {
   else
     echo "$SERVICE was not running... starting."
     cd $MCPATH
-    as_user "cd $MCPATH && screen -dmS survival-mc java -Xmx${MAX_HEAP}M -Xms${MIN_HEAP}M -jar minecraft_server.jar nogui"
-  ## Add additional lines for additioanl Minecrat instances below here
+    as_user "cd $MCPATH && screen -dmS <%= scope['minecraft::server::screen_name'] %> java -Xmx${MAX_HEAP}M -Xms${MIN_HEAP}M -jar minecraft_server.jar nogui"
+  ## Add additional lines for additional Minecrat instances below here
   # as_user "cd $MCPATH2 && screen -dmS creative-mc java -Xmx2048M -Xms2048M -jar minecraft_server.jar nogui"
     sleep 7
     if ps ax | grep -v grep | grep -v -i SCREEN | grep $SERVICE > /dev/null
@@ -58,12 +58,12 @@ mc_stop() {
         then
                 echo "$SERVICE is running... stopping."
               ## Add a line for each task for each Minecraft server you're controlling
-              as_user "screen -p 0 -S survival-mc -X eval 'stuff \"say SERVER SHUTTING DOWN IN 10 SECONDS. Saving map...\"\015'"
+              as_user "screen -p 0 -S <%= scope['minecraft::server::screen_name'] %> -X eval 'stuff \"say SERVER SHUTTING DOWN IN 10 SECONDS. Saving map...\"\015'"
                 # as_user "screen -p 0 -S creative-mc -X eval 'stuff \"say SERVER SHUTTING DOWN IN 10 SECONDS. Saving map...\"\015'"
-                as_user "screen -p 0 -S survival-mc -X eval 'stuff \"save-all\"\015'"
+                as_user "screen -p 0 -S <%= scope['minecraft::server::screen_name'] %> -X eval 'stuff \"save-all\"\015'"
                 # as_user "screen -p 0 -S creative-mc -X eval 'stuff \"save-all\"\015'"
                 sleep 10
-                as_user "screen -p 0 -S survival-mc -X eval 'stuff \"stop\"\015'"
+                as_user "screen -p 0 -S <%= scope['minecraft::server::screen_name'] %> -X eval 'stuff \"stop\"\015'"
                 # as_user "screen -p 0 -S creative-mc -X eval 'stuff \"stop\"\015'"
                 sleep 7
         else

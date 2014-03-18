@@ -1,14 +1,18 @@
-define minecraft::plugin($plugin_name = $title, $source) {
+define minecraft::plugin(
+  $plugin_name = $title,
+  $source,
+  $servername,
+  ) {
 
-  if $plugin_name =~ /^.*\.jar$/ {
+  if $plugin_name =~ /\.jar$/ {
     fail("minecraft plugin name ${plugin_name} must not end in '.jar'")
   }
   
-  wget::fetch { $plugin_name:
+  wget::fetch { "${servername}-${plugin_name}":
     source      => $source,
-    destination => "${minecraft::install_dir}/plugins/${plugin_name}.jar",
-    user        => $minecraft::user,
-    notify      => Service['minecraft'],
-    require     => File["${minecraft::install_dir}/plugins"],
+    destination => "$Minecraft::Server[${servername}]['install_dir']/plugins/${plugin_name}.jar",
+    user        => $Minecraft::Server[${servername}]['user'],
+    notify      => Service["mc-${servername}"],
+    require     => File["$Minecraft::Server[${servername}]['install_dir']/plugins"],
   }
 }

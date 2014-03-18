@@ -1,28 +1,28 @@
-class minecraft::source {
+define minecraft::source(
+  $servername = $title,
+  ) {
 
   $jar_name = 'minecraft_server'
 
-  case $minecraft::source {
+  case $Minecraft::Server[${servername}]['source'] {
     /^(\d+)\.(\d+)\.(\d+)$/,    # Matches Semantic Versioning for vanilla Minecraft, see http://semver.org/
     /^(\d{2})w(\d{2})[a-z]$/: { # Matches current versioning scheme for vanilla Minecraft snapshots, uses the same download source URL
-      $download = "https://s3.amazonaws.com/Minecraft.Download/versions/${minecraft::source}/minecraft_server.${minecraft::source}.jar"
-    }
-    # Downloads latest type of Bukkit server
+      $download = "https://s3.amazonaws.com/Minecraft.Download/versions/$Minecraft::Server[${servername}]['source']/minecraft_server.$Minecraft::Server[${servername}]['source'].jar"    }
     'recommended', 'rb', 'stable': {
       $download = 'http://dl.bukkit.org/latest-rb/craftbukkit.jar'
     }
     'beta', 'dev': {
-      $download = "http://dl.bukkit.org/latest-${minecraft::source}/craftbukkit-${minecraft::source}.jar"
+      $download = "http://dl.bukkit.org/latest-$Minecraft::Server[${servername}]['source']/craftbukkit-$Minecraft::Server[${servername}]['source'].jar"
     }
     default: {
-      $download = $minecraft::source
+      $download = $Minecraft::Server[${servername}]['source']
     }
   }
 
-  wget::fetch { 'minecraft':
+  wget::fetch { "${servername}-minecraft":
     source      => $download,
-    destination => "${minecraft::install_dir}/minecraft_server.jar",
-    user        => $minecraft::user,
-    require     => User[$minecraft::user],
+    destination => "$Minecraft::Server[${servername}]['install_dir']/${jar_name}.jar",
+    user        => $Minecraft::Server[${servername}]['user'],
+    #explicit user and group requires not needed, puppet will autorequire
   }
 }
