@@ -1,32 +1,53 @@
-class minecraft::properties {
+define minecraft::properties(
+  $servername = $title,
+  ) {
 
-  define server_setting {
+  define server_setting(
+    $servername,
+    $filename,
+    ) {
+    
     file { $title :
       ensure  => file,
-      path    => "${minecraft::install_dir}/${title}",
-      content => template("minecraft/${title}.erb"),
-      owner   => $minecraft::user,
-      group   => $minecraft::group,
+      path    => Minecraft::Server[${servername}]['install_dir']/${filename}",
+      content => template("minecraft/${filename}.erb"),
+      owner   => Minecraft::Server[${servername}]['user'],
+      group   => Minecraft::Server[${servername}]['group'],
       mode    => '0664',
-      require => User[$minecraft::user],
+      #explicit user and group requires not needed, puppet will autorequire
     }
   }
 
-  server_setting { 'server.properties': }
-
-  if $minecraft::ops != undef {
-    server_setting { 'ops.txt': }
+  server_setting { "${servername}-server.properties":
+    servername => $servername,
+    filename => 'server.properties',
   }
 
-  if $minecraft::banned_players != undef {
-    server_setting { 'banned-players.txt': }
+  if Minecraft::Server[${servername}]['ops'] != undef {
+    server_setting { "${servername}-ops.txt":
+      servername => $servername,
+      filename => 'ops.txt',      
+    }
   }
 
-  if $minecraft::banned_ips != undef {
-    server_setting { 'banned-ips.txt': }
+  if Minecraft::Server[${servername}]['banned_players'] != undef {
+    server_setting { "${servername}-banned-players.txt":
+      servername => $servername,
+      filename => 'banned-players.txt',      
+    }
   }
 
-  if $minecraft::white_list_players != undef {
-    server_setting { 'white-list.txt': }
+  if Minecraft::Server[${servername}]['banned_ips'] != undef {
+    server_setting { "${servername}-banned-ips.txt":
+      servername => $servername,
+      filename => 'banned-ips.txt',      
+    }
+  }
+
+  if Minecraft::Server[${servername}]['white_list_players'] != undef {
+    server_setting { "${servername}-white-list.txt":
+      servername => $servername,
+      filename => 'white-list.txt',      
+    }
   }
 }
