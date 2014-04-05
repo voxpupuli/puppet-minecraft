@@ -9,7 +9,7 @@ class minecraft::user {
     gid        => $minecraft::group,
     home       => $minecraft::install_dir,
     managehome => true,
-    require    => Group['minecraft']
+    require    => Group[$minecraft::group]
   }
 
   # Ensures deletion of install_dir does not break module, setup for plugins
