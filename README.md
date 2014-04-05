@@ -85,7 +85,7 @@ minecraft::source: 'dev'
 minecraft::heap_size: 2048
 minecraft::difficulty: 2
 minecraft::motd: 'Managed by Puppet, with Hiera!'
-minecraft::ops: 
+minecraft::ops:
   - 'op1'
   - 'op2'
 ```
@@ -185,7 +185,7 @@ nginx::nginx_vhosts:
 Note that Nginx setup is not within the scope of this module, and is
 simply provided as a tip.
 
-### Caveats
+## Caveats
 
 This package uses
 [Puppetlabs' stdlib module](https://forge.puppetlabs.com/puppetlabs/stdlib)
@@ -194,14 +194,14 @@ package (utilized for running the Minecraft server as a background
 service). This is currently the safest way to declare a
 possibly-conflicting dependency.
 
-### Testing
+## Testing
 
 Testing of this package occurs on an Ubuntu 12.04.4 LTS machine, using
 Puppet 3.4.3. This is made easy using
 [vagrant](http://www.vagrantup.com/), and my own
 [box](https://vagrantcloud.com/andschwa/ubuntu-precise-latest-puppet).
 
-### Copyright
+## Copyright
 
 My contributions as indicated by the git repository's history are
 Copyright 2014 Andrew Schwartzmeyer, and as stated above, are released
