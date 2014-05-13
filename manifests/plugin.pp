@@ -2,6 +2,7 @@ define minecraft::plugin(
   $plugin_name = $title,
   $source,
   $servername,
+  $server_dir,
   ) {
 
   if $plugin_name =~ /\.jar$/ {
@@ -10,9 +11,9 @@ define minecraft::plugin(
   
   wget::fetch { "${servername}-${plugin_name}":
     source      => $source,
-    destination => "$Minecraft::Server[${servername}]['install_dir']/plugins/${plugin_name}.jar",
+    destination => "${server_dir}/plugins/${plugin_name}.jar",
     user        => $Minecraft::Server[${servername}]['user'],
     notify      => Service["mc-${servername}"],
-    require     => File["$Minecraft::Server[${servername}]['install_dir']/plugins"],
+    #Parent directories are autorequired if managed
   }
 }

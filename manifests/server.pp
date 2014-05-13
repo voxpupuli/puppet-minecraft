@@ -55,13 +55,18 @@ define minecraft::server(
   
   include minecraft::packages
   
-  minecraft::user { ${servername}: }
-  minecraft::properties {${servername}: }
+  server_dir = "${install_dir}/${servername}"
+  
+  minecraft::user { ${servername}:
+    user => $user, group => $group,
+    home_dir => $home_dir,
+  }
+  minecraft::properties {${servername}: server_dir => $server_dir, }
+  minecraft::source {${servername}: server_dir => $server_dir, }
   minecraft::service {${servername}: }
-  minecraft::source {${servername}: }
   
   # Ensures deletion of install_dir does not break module, setup for plugins
-  $dirs = [ ${install_dir}, "${install_dir}/plugins" ]
+  $dirs = [ ${server_dir}, "${server_dir}/plugins" ]
 
   file { $dirs:
     ensure  => directory,
@@ -70,5 +75,6 @@ define minecraft::server(
     #explicit user and group requires not needed, puppet will autorequire
   }
   
-  create_resources('minecraft::plugin', $plugins, { 'servername' => ${servername} })
+  create_resources('minecraft::plugin', $plugins, { 'servername' => ${servername},
+                                                    'server_dir' => ${server_dir}, })
 }

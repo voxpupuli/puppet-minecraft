@@ -1,5 +1,6 @@
 define minecraft::source(
   $servername = $title,
+  $server_dir,
   ) {
 
   $jar_name = 'minecraft_server'
@@ -21,8 +22,9 @@ define minecraft::source(
 
   wget::fetch { "${servername}-minecraft":
     source      => $download,
-    destination => "$Minecraft::Server[${servername}]['install_dir']/${jar_name}.jar",
+    destination => "${server_dir}/${jar_name}.jar",
     user        => $Minecraft::Server[${servername}]['user'],
+    group       => $Minecraft::Server[${servername}]['group'],
     #explicit user and group requires not needed, puppet will autorequire
   }
 }

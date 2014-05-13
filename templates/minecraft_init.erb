@@ -16,7 +16,7 @@
 #Settings
 SERVICE='minecraft_server.jar'
 USERNAME="<%= scope['minecraft::server::user'] %>"
-MCPATH="<%= scope['minecraft::server::install_dir'] %>"
+MCPATH="<%= scope['minecraft::server::server_dir'] %>"
 MAX_HEAP="<%= scope['minecraft::server::heap_size'] %>"
 MIN_HEAP="<%= scope['minecraft::server::heap_start'] %>"
 ## If you have more than one Minecraft instance to control, add additional MCPATH

@@ -1,5 +1,6 @@
 define minecraft::properties(
   $servername = $title,
+  $server_dir,
   ) {
 
   define server_setting(
@@ -9,7 +10,7 @@ define minecraft::properties(
     
     file { $title :
       ensure  => file,
-      path    => Minecraft::Server[${servername}]['install_dir']/${filename}",
+      path    => "${server_dir}/${filename}",
       content => template("minecraft/${filename}.erb"),
       owner   => Minecraft::Server[${servername}]['user'],
       group   => Minecraft::Server[${servername}]['group'],

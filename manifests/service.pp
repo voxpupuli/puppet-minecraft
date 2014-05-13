@@ -1,5 +1,6 @@
 define minecraft::service(
   $servername = $title,
+  $autostart,
   ) {
 
   file { "${servername}-minecraft_init":
@@ -13,7 +14,7 @@ define minecraft::service(
 
   service { "mc-${servername}":
     ensure    => running,
-    enable    => $Minecraft::Server[${servername}]['autostart'],
-    subscribe => File[ "${servername}-server.properties", 'minecraft_init' ],
+    enable    => $autostart,
+    subscribe => File[ "${servername}-server.properties", '${servername}-minecraft_init' ],
   }
 }
