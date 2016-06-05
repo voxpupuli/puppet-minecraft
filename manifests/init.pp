@@ -49,11 +49,11 @@ class minecraft(
   $spawn_protection     = 16,
   $motd                 = 'A Minecraft Server') {
 
-  include minecraft::packages
-  include minecraft::properties
-  include minecraft::service
-  include minecraft::source
-  include minecraft::user
+  include ::minecraft::packages
+  include ::minecraft::properties
+  include ::minecraft::service
+  include ::minecraft::source
+  include ::minecraft::user
 
   create_resources('minecraft::plugin', $plugins)
 }
