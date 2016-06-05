@@ -9,7 +9,7 @@ RSpec.configure do |c|
     selinux_config_mode: 'disabled',
     puppetversion: Puppet.version,
     facterversion: Facter.version,
-    ipaddress: '172.16.254.255',
+    ipaddress: '172.16.254.254',
     macaddress: 'AA:AA:AA:AA:AA:AA',
   }
 end
