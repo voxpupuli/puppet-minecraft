@@ -1,0 +1,8 @@
+fixtures:
+  symlinks:
+    minecraft: "#{source_dir}"
+  forge_modules:
+    stdlib: 'puppetlabs/stdlib'
+    archive: 'puppet/archive'
+    java: 'puppetlabs/java'
+    wget: 'maestrodev/wget'

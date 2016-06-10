@@ -7,6 +7,6 @@ summary 'Minecraft / CraftBukkit Server v2'
 description 'Install and manage a Minecraft or CraftBukkit server'
 project_page 'https://github.com/andschwa/puppet-minecraft'
 
-dependency 'maestrodev/wget', '>= 1.1.0'
+dependency 'puppet/archive', '>= 0.5.1'
 dependency 'puppetlabs/java', '>= 0.1.6'
 dependency 'puppetlabs/stdlib', '>=  4.1.0'
