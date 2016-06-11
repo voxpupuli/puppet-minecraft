@@ -28,6 +28,27 @@ describe 'minecraft::plugin', :type => :define do
   end
   it { is_expected.to compile }
   it 'downloads the plugin' do
-    #it is_expected.to contain_class('archive')
+    is_expected.to contain_archive('dynmap').with({
+      :ensure => 'present',
+      :path   => '/opt/minecraft/plugins/dynmap.jar',
+      :user   => 'minecraft',
+      :source => 'http://dev.bukkit.org/media/files/757/982/dynmap-1.9.1.jar'})
+  end
+
+  it 'depends on plugin dir' do
+    is_expected.to contain_archive('dynmap').that_requires('File[/opt/minecraft/plugins]')
+  end
+
+  it 'depends on minecraft user' do
+    is_expected.to contain_archive('dynmap').that_requires('User[minecraft]')
+  end
+
+  it 'enforces plugin ownership' do
+    is_expected.to contain_file('/opt/minecraft/plugins/dynmap.jar').with({
+      :ensure => 'file',
+      :owner  => 'minecraft',
+      :group  => 'minecraft',
+      :mode   => '0644',
+    }).that_requires('Archive[dynmap]')
   end
 end

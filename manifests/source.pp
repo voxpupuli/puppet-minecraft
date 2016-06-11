@@ -22,7 +22,7 @@ class minecraft::source {
   archive { 'minecraft_server':
     ensure  => 'present',
     source  => $download,
-    path    => "${minecraft::install_dir},minecraft_server.jar",
+    path    => "${minecraft::install_dir}/minecraft_server.jar",
     require => [User[$minecraft::user],File[$minecraft::install_dir]],
     user    => $minecraft::user,
   }

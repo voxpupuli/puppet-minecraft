@@ -3,6 +3,7 @@ fixtures:
     minecraft: "#{source_dir}"
   forge_modules:
     stdlib: 'puppetlabs/stdlib'
-    archive: 'puppet/archive'
     java: 'puppetlabs/java'
     wget: 'maestrodev/wget'
+  repositories:
+    archive: "https://github.com/voxpupuli/puppet-archive.git"
