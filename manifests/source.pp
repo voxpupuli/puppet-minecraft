@@ -28,11 +28,14 @@ class minecraft::source {
   }
 
   file { "${minecraft::install_dir}/minecraft_server.jar":
-  ensure => 'file',
-  owner   => $minecraft::user,
-  group   => $minecraft::group,
-  mode    => '0644',
-  require => [User[$minecraft::user],Group[$minecraft::group],Archive['minecraft_server']],
+    ensure  => 'file',
+    owner   => $minecraft::user,
+    group   => $minecraft::group,
+    mode    => '0644',
+    require => [User[$minecraft::user],
+                Group[$minecraft::group],
+                Archive['minecraft_server'],
+    ],
   }
 
 }
