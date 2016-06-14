@@ -19,10 +19,23 @@ class minecraft::source {
     }
   }
 
-  wget::fetch { 'minecraft':
-    source      => $download,
-    destination => "${minecraft::install_dir}/minecraft_server.jar",
-    user        => $minecraft::user,
-    require     => User[$minecraft::user],
+  archive { 'minecraft_server':
+    ensure  => 'present',
+    source  => $download,
+    path    => "${minecraft::install_dir}/minecraft_server.jar",
+    require => [User[$minecraft::user],File[$minecraft::install_dir]],
+    user    => $minecraft::user,
   }
+
+  file { "${minecraft::install_dir}/minecraft_server.jar":
+    ensure  => 'file',
+    owner   => $minecraft::user,
+    group   => $minecraft::group,
+    mode    => '0644',
+    require => [User[$minecraft::user],
+                Group[$minecraft::group],
+                Archive['minecraft_server'],
+    ],
+  }
+
 }
