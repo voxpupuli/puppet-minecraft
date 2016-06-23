@@ -5,7 +5,7 @@ Description=Minecraft Server
 WorkingDirectory="<%= @install_dir %>"
 User="<%= @user %>"
 
-ExecStart=/usr/bin/screen -DmS survival-mc java -server -Xmx<%= @heap_min%> -Xms <%= @heap_start %> -jar minecraft_erver.jar nogui
+ExecStart=/usr/bin/screen -DmS survival-mc java -server -Xmx<%= @heap_start %> -Xms <%= @heap_min %> -jar minecraft_server.jar nogui
 
 ExecStop=/usr/bin/screen -p 0 -S mc -X eval 'stuff "say SERVER SHUTTING DOWN. Saving map..."\\015'
 ExecStop=/usr/bin/screen -p 0 -S mc -X eval 'stuff "save-all"\\015'
