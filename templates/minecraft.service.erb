@@ -1,0 +1,23 @@
+Environment=heap_min="<%= scope['minecraft::heap_size'] %>
+Environment=heap_start"<%= scope['minecraft::heap_start'] %>
+
+[Unit]
+Description=Minecraft Server
+
+[Service]
+WorkingDirectory="<%= scope['minecraft::install_dir'] %>"
+User="<%= scope['minecraft::user'] %>"
+
+ExecStart=/usr/bin/screen -DmS survival-mc java -server -Xmx $heap_min -Xms $heap_start -jar minecraft_erver.jar nogui
+
+ExecStop=/usr/bin/screen -p 0 -S mc -X eval 'stuff "say SERVER SHUTTING DOWN. Saving map..."\\015'
+ExecStop=/usr/bin/screen -p 0 -S mc -X eval 'stuff "save-all"\\015'
+ExecStop=/usr/bin/screen -p 0 -S mc -X eval 'stuff "stop"\\015'
+ExecStop=/bin/sleep 2
+RestartSec=10s
+
+Restart=always
+
+
+[Install]
+WantedBy=multi-user.target
