@@ -1,4 +1,4 @@
-## 2016-08-18 Release 3.0.0
+## 2016-08-18 Release 3.0.1
 
   * First release in the Vox Pupuli namespace
   * modulesync with latest Vox Pupuli defaults
