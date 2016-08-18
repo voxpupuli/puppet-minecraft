@@ -1,6 +1,6 @@
 {
   "name": "voxpupuli-minecraft",
-  "version": "3.0.0-rc0",
+  "version": "3.0.0",
   "author": "voxpupuli",
   "summary": "Install and manage a Minecraft or CraftBukkit server",
   "license": "Apache-2.0",
