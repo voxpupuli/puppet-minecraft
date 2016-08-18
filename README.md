@@ -1,4 +1,4 @@
-# Puppet Module for Minecraft v2
+# Puppet Module for Minecraft
 
 `puppet-minecraft` installs and configures your Minecraft or
 CraftBukkit server with Puppet!
