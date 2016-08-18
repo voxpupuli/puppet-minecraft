@@ -39,6 +39,8 @@ notifications:
   email: false
 deploy:
   provider: puppetforge
+  edge:
+    branch: ha-bug-puppet-forge
   user: puppet
   password:
     secure: "VXIJe5iqb41N6Mclawqb/+RutSzuIOjNDqfODtXfAardWJVrbIj29Ws86q84BoRJqFToGhbxrmY7iEdghxwJilfx12q3IfnKEMvICD7jGhFRfAlNtOdgkP1K0/wr/LkJiBzktL99aJTKQh3GtInLxxLUxSVCDhYrVG0MmfyS07Q="

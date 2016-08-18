@@ -1,7 +1,7 @@
 {
-  "name": "voxpupuli-minecraft",
-  "version": "3.0.1-rc0",
-  "author": "voxpupuli",
+  "name": "puppet-minecraft",
+  "version": "3.0.1",
+  "author": "Vox Pupuli",
   "summary": "Install and manage a Minecraft or CraftBukkit server",
   "license": "Apache-2.0",
   "source": "https://github.com/voxpupuli/puppet-minecraft",
