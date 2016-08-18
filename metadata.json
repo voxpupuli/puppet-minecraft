@@ -1,6 +1,6 @@
 {
   "name": "voxpupuli-minecraft",
-  "version": "3.0.0",
+  "version": "3.0.1-rc0",
   "author": "voxpupuli",
   "summary": "Install and manage a Minecraft or CraftBukkit server",
   "license": "Apache-2.0",
@@ -13,11 +13,11 @@
       "version_requirement": ">= 4.1.0"
     },
     {
-      "name":"puppetlabs-java",
+      "name": "puppetlabs-java",
       "version_requirement": "0.1.6"
     },
     {
-      "name":"puppet-archive",
+      "name": "puppet-archive",
       "version_requirement": ">= 1.0.0"
     }
   ],
@@ -34,7 +34,7 @@
       "operatingsystemrelease": [
         "12.04",
         "14.04"
-       ]
+      ]
     },
     {
       "operatingsystem": "RedHat",
