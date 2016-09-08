@@ -1,9 +1,8 @@
 fixtures:
   symlinks:
     minecraft: "#{source_dir}"
-  forge_modules:
-    stdlib: 'puppetlabs/stdlib'
-    java: 'puppetlabs/java'
-    wget: 'maestrodev/wget'
   repositories:
-    archive: "https://github.com/voxpupuli/puppet-archive.git"
+    archive: "git://github.com/voxpupuli/puppet-archive.git"
+    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+    java: "git://github.com/puppetlabs/puppetlabs-java.git"
+    wget: "git://github.com/maestrodev/puppet-wget.git"
