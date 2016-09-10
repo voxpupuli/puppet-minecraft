@@ -38,4 +38,11 @@ class minecraft::source {
     ],
   }
 
+  file { "${minecraft::install_dir}/eula.txt":
+    ensure  => file,
+    owner   => $minecraft::user,
+    group   => $minecraft::group,
+    content => template('minecraft/eula.txt.erb'),
+  }
+
 }
