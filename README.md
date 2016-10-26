@@ -1,4 +1,4 @@
-# Puppet Module for Minecraft
+# Minecraft module for Puppet
 
 `puppet-minecraft` installs and configures your Minecraft or
 CraftBukkit server with Puppet!
@@ -25,17 +25,17 @@ details), and can be configured through hiera.
 Parameters are available which control how the Minecraft installation
 behaves:
 
-  * `user`: The user account for the Minecraft service
-  * `group`: The user group for the Minecraft service
-  * `install_dir`: The directory in which Minecraft stores its data
-  * `source`: Minecraft (semvar) or CraftBukkit ('recommended',
-    'beta', or 'dev'), or direct source (URL for `wget`)
-  * `autostart`: Start the service at boot
-  * `manage_java`: Manage the JRE package
-  * `heap_size`: The maximum Java heap size for the Minecraft service
-    in megabytes
-  * `heap_start`: The initial Java heap size for the Minecraft service
-    in megabytes
+* `user`: The user account for the Minecraft service
+* `group`: The user group for the Minecraft service
+* `install_dir`: The directory in which Minecraft stores its data
+* `source`: Minecraft (semvar) or CraftBukkit ('recommended',
+  'beta', or 'dev'), or direct source (URL for `wget`)
+* `autostart`: Start the service at boot
+* `manage_java`: Manage the JRE package
+* `heap_size`: The maximum Java heap size for the Minecraft service
+  in megabytes
+* `heap_start`: The initial Java heap size for the Minecraft service
+  in megabytes
 
 ### Minecraft Versions / CraftBukkit Builds
 
@@ -179,7 +179,7 @@ nginx::nginx_vhosts:
   map.domain.tld:
     proxy: http://localhost:8123
     proxy_set_header:
-	  - Host $host
+      - Host $host
 ```
 
 Note that Nginx setup is not within the scope of this module, and is
