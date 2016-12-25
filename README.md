@@ -2,10 +2,10 @@
 
 [![Build Status](https://travis-ci.org/voxpupuli/puppet-minecraft.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-minecraft)
 [![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-minecraft/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-minecraft)
-[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/minecraft.svg)](https://forge.puppetlabs.com/puppet/minecraft)
-[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/minecraft.svg)](https://forge.puppetlabs.com/puppet/minecraft)
-[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/minecraft.svg)](https://forge.puppetlabs.com/puppet/minecraft)
-[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/minecraft.svg)](https://forge.puppetlabs.com/puppet/minecraft)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/minecraft.svg)](https://forge.puppet.com/puppet/minecraft)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/minecraft.svg)](https://forge.puppet.com/puppet/minecraft)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/minecraft.svg)](https://forge.puppet.com/puppet/minecraft)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/minecraft.svg)](https://forge.puppet.com/puppet/minecraft)
 
 `puppet-minecraft` installs and configures your Minecraft or
 CraftBukkit server with Puppet!
@@ -16,7 +16,7 @@ improvements including: version selection, CraftBukkit support, a
 plugin resource, and settings managed via templates. It is released
 under the original Apache License, Version 2.0.
 
-This module has been tested on Ubuntu Server 12.04.4 with Puppet 3.4.3.
+This module has been tested on Ubuntu Server 12.04.4 with Puppet 3.8.7.
 
 ## Usage
 
