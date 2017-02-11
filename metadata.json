@@ -1,6 +1,6 @@
 {
   "name": "puppet-minecraft",
-  "version": "3.0.3-rc0",
+  "version": "3.1.0",
   "author": "Vox Pupuli",
   "summary": "Install and manage a Minecraft or CraftBukkit server",
   "license": "Apache-2.0",
@@ -57,7 +57,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">=3.8.7 < 5.0.0"
+      "version_requirement": ">= 3.8.7 < 5.0.0"
     }
   ]
 }
