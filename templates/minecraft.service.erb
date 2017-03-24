@@ -1,0 +1,17 @@
+#Puppet generated minecraft unit.
+
+[Unit]
+Description=Minecraft server
+After=local-fs.target network.target
+
+[Service]
+WorkingDirectory=<%= scope['minecraft::install_dir'] %>
+User=<%= scope['minecraft::user'] %>
+Type=simple
+Environment=MIN_HEAP=<%= scope['minecraft::heap_start'] %>
+Environment=MAX_HEAP=<%= scope['minecraft::heap_size'] %>
+ExecStart=/usr/bin/java -Xmx${MAX_HEAP}M -Xms${MIN_HEAP}M -jar minecraft_server.jar nogui
+ExecStop=<%= scope['minecraft::install_dir'] %>/mcrcon -c -H 127.0.0.1 -P <%= scope['minecraft::rcon_port'] %> -p <%= scope['minecraft::rcon_pass'] %> '/stop' ; /bin/true
+
+[Install]
+WantedBy=multi-user.target
