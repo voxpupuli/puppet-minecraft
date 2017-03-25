@@ -192,6 +192,24 @@ nginx::nginx_vhosts:
 Note that Nginx setup is not within the scope of this module, and is
 simply provided as a tip.
 
+### Rcon Example
+rcon can be enabled to subsequently access the server's console.
+
+```puppet
+class{'minecraft':
+  enable_rcon   => true,
+  rcon_port     => 1234,
+  rcon_password => 'foo',
+}
+```
+
+A [rcon client](http://wiki.vg/RCON) e.g [mcrcon](https://github.com/Tiiffi/mcrcon) can be used to connect.
+
+```bash
+# ./mcrcon  -c -H 127.0.0.1 -P 25575 -p 1234 -t
+Logged in. Type "Q" to quit!
+```
+
 ## Caveats
 
 This package uses
