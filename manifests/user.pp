@@ -1,7 +1,8 @@
 class minecraft::user {
 
   group { $minecraft::group:
-    ensure     => present,
+    ensure => present,
+    system => true,
   }
 
   user { $minecraft::user:
@@ -9,6 +10,7 @@ class minecraft::user {
     gid        => $minecraft::group,
     home       => $minecraft::install_dir,
     managehome => true,
+    system     => true,
     require    => Group[$minecraft::group],
   }
 
