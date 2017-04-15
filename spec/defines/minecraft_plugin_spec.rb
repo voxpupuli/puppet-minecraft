@@ -4,6 +4,7 @@ describe 'minecraft::plugin', type: :define do
   let :pre_condition do
     'include ::minecraft'
   end
+
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let :facts do
