@@ -6,6 +6,7 @@ describe 'minecraft' do
       let(:facts) do
         facts
       end
+
       context 'with defaults for all parameters' do
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_group('minecraft').with_system(true) }
