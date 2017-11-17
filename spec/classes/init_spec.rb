@@ -20,6 +20,7 @@ describe 'minecraft' do
               rcon_port: 1234
             }
           end
+
           it { is_expected.to contain_file('server.properties').with_content(%r{^rcon\.password=foobar$}) }
           it { is_expected.to contain_file('server.properties').with_content(%r{^rcon\.port=1234$}) }
         end
