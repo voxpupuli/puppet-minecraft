@@ -26,6 +26,8 @@ class minecraft(
   $server_port          = 25565,
   $level_type           = 'DEFAULT',
   $enable_rcon          = false,
+  $rcon_password        = '',
+  $rcon_port            = 25575,
   $force_gamemode       = false,
   $level_seed           = '',
   $server_ip            = '',
