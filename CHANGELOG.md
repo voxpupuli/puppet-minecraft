@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.1.1](https://github.com/voxpupuli/puppet-minecraft/tree/v4.1.1) (2018-10-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-minecraft/compare/v4.1.0...v4.1.1)
+
+**Merged pull requests:**
+
+- modulesync 2.2.0 and allow puppet 6.x [\#61](https://github.com/voxpupuli/puppet-minecraft/pull/61) ([bastelfreak](https://github.com/bastelfreak))
+- allow puppetlabs/stdlib 5.x [\#59](https://github.com/voxpupuli/puppet-minecraft/pull/59) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v4.1.0](https://github.com/voxpupuli/puppet-minecraft/tree/v4.1.0) (2018-08-15)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-minecraft/compare/v4.0.0...v4.1.0)
