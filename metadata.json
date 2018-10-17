@@ -1,6 +1,6 @@
 {
   "name": "puppet-minecraft",
-  "version": "4.1.1",
+  "version": "4.1.2-rc0",
   "author": "Vox Pupuli",
   "summary": "Install and manage a Minecraft or CraftBukkit server",
   "license": "Apache-2.0",
