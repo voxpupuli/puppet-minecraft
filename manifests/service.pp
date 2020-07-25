@@ -1,7 +1,6 @@
 class minecraft::service {
-
   file { 'minecraft_init':
-    ensure  => present,
+    ensure  => file,
     path    => '/etc/init.d/minecraft',
     owner   => 'root',
     group   => 'root',
@@ -12,6 +11,6 @@ class minecraft::service {
   service { 'minecraft':
     ensure    => running,
     enable    => $minecraft::autostart,
-    subscribe => File['minecraft_init' ],
+    subscribe => File['minecraft_init'],
   }
 }

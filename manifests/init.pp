@@ -1,4 +1,4 @@
-class minecraft(
+class minecraft (
   $user                 = 'minecraft',      # The user account for the Minecraft service
   $group                = 'minecraft',      # The user group for the Minecraft service
   $install_dir          = '/opt/minecraft', # Owned by user:group
@@ -49,8 +49,7 @@ class minecraft(
   $gen_structures       = true,
   $view_distance        = 10,
   $spawn_protection     = 16,
-  $motd                 = 'A Minecraft Server') {
-
+$motd                 = 'A Minecraft Server') {
   include minecraft::packages
   include minecraft::properties
   include minecraft::service

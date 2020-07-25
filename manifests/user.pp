@@ -1,5 +1,4 @@
 class minecraft::user {
-
   group { $minecraft::group:
     ensure => present,
     system => true,
@@ -15,7 +14,7 @@ class minecraft::user {
   }
 
   # Ensures deletion of install_dir does not break module, setup for plugins
-  $dirs = [ $minecraft::install_dir, "${minecraft::install_dir}/plugins" ]
+  $dirs = [$minecraft::install_dir, "${minecraft::install_dir}/plugins"]
 
   file { $dirs:
     ensure  => directory,

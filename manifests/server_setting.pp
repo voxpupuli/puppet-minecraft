@@ -9,4 +9,3 @@ define minecraft::server_setting {
     require => User[$minecraft::user],
   }
 }
-
