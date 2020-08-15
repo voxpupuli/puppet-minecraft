@@ -1,9 +1,8 @@
-define minecraft::plugin(
+define minecraft::plugin (
   $source,
   $plugin_name  = $title,
   $ensure       = present
 ) {
-
   if $plugin_name =~ /^.*\.jar$/ {
     fail("minecraft plugin title ${plugin_name} must not end in '.jar'")
   }

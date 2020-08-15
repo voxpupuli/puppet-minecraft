@@ -1,5 +1,4 @@
 class minecraft::properties {
-
   minecraft::server_setting { 'server.properties': }
 
   if $minecraft::ops != undef {

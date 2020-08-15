@@ -1,5 +1,4 @@
 class minecraft::source {
-
   $jar_name = 'minecraft_server'
 
   case $minecraft::source {
@@ -33,8 +32,8 @@ class minecraft::source {
     group   => $minecraft::group,
     mode    => '0644',
     require => [User[$minecraft::user],
-                Group[$minecraft::group],
-                Archive['minecraft_server'],
+      Group[$minecraft::group],
+      Archive['minecraft_server'],
     ],
   }
 
@@ -44,5 +43,4 @@ class minecraft::source {
     group   => $minecraft::group,
     content => template('minecraft/eula.txt.erb'),
   }
-
 }
