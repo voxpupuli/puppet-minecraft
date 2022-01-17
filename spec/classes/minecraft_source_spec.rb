@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'minecraft::source' do
@@ -16,10 +18,10 @@ describe 'minecraft::source' do
         it { is_expected.to contain_class('minecraft::source') }
 
         it 'downloads the server' do
-          is_expected.to contain_archive('minecraft_server').with(ensure:  'present',
-                                                                  path:    '/opt/minecraft/minecraft_server.jar',
-                                                                  user:    'minecraft',
-                                                                  source:  'https://s3.amazonaws.com/Minecraft.Download/versions/1.7.4/minecraft_server.1.7.4.jar')
+          is_expected.to contain_archive('minecraft_server').with(ensure: 'present',
+                                                                  path: '/opt/minecraft/minecraft_server.jar',
+                                                                  user: 'minecraft',
+                                                                  source: 'https://s3.amazonaws.com/Minecraft.Download/versions/1.7.4/minecraft_server.1.7.4.jar')
 
           is_expected.to contain_archive('minecraft_server').that_requires('User[minecraft]')
         end
