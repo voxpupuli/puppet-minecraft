@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'minecraft' do
@@ -13,6 +15,7 @@ describe 'minecraft' do
         it { is_expected.to contain_user('minecraft').with_system(true) }
         it { is_expected.to contain_file('server.properties').with_content(%r{^rcon\.password=$}) }
         it { is_expected.to contain_file('server.properties').with_content(%r{^rcon\.port=25575$}) }
+
         context 'with all parameters set' do
           let(:params) do
             {

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'minecraft::plugin', type: :define do
@@ -21,6 +23,7 @@ describe 'minecraft::plugin', type: :define do
       end
 
       it { is_expected.to compile.with_all_deps }
+
       it 'downloads the plugin' do
         is_expected.to contain_archive('dynmap').with(ensure: 'present',
                                                       path: '/opt/minecraft/plugins/dynmap.jar',
