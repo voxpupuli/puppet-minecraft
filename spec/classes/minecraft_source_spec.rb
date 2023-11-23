@@ -10,7 +10,7 @@ describe 'minecraft::source' do
       end
 
       let :pre_condition do
-        'include ::minecraft'
+        'include minecraft'
       end
 
       context 'with defaults' do
