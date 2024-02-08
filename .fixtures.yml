@@ -3,4 +3,3 @@ fixtures:
     archive: "https://github.com/voxpupuli/puppet-archive.git"
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
     java: "https://github.com/puppetlabs/puppetlabs-java.git"
-    wget: "https://github.com/maestrodev/puppet-wget.git"
