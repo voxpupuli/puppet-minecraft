@@ -1,6 +1,6 @@
 fixtures:
   repositories:
-    archive: "git://github.com/voxpupuli/puppet-archive.git"
-    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
-    java: "git://github.com/puppetlabs/puppetlabs-java.git"
-    wget: "git://github.com/maestrodev/puppet-wget.git"
+    archive: "https://github.com/voxpupuli/puppet-archive.git"
+    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+    java: "https://github.com/puppetlabs/puppetlabs-java.git"
+    wget: "https://github.com/maestrodev/puppet-wget.git"
