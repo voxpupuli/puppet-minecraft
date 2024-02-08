@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'minecraft::plugin', type: :define do
   let :pre_condition do
-    'include ::minecraft'
+    'include minecraft'
   end
 
   on_supported_os.each do |os, facts|
