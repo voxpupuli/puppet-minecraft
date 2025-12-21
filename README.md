@@ -1,6 +1,6 @@
 # Minecraft module for Puppet
 
-[![Build Status](https://travis-ci.org/voxpupuli/puppet-minecraft.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-minecraft)
+![Build Status](https://github.com/voxpupuli/puppet-minecraft/actions/workflows/ci.yml/badge.svg?branch=master)
 [![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-minecraft/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-minecraft)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/minecraft.svg)](https://forge.puppet.com/puppet/minecraft)
 [![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/minecraft.svg)](https://forge.puppet.com/puppet/minecraft)
