@@ -14,7 +14,7 @@ describe 'minecraft::plugin', type: :define do
       end
       let :params do
         {
-          source: 'http://dev.bukkit.org/media/files/757/982/dynmap-1.9.1.jar'
+          source: 'http://dev.bukkit.org/media/files/757/982/dynmap-1.9.1.jar',
         }
       end
 

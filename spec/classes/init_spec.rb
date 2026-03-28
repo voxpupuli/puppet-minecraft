@@ -20,7 +20,7 @@ describe 'minecraft' do
           let(:params) do
             {
               rcon_password: 'foobar',
-              rcon_port: 1234
+              rcon_port: 1234,
             }
           end
 

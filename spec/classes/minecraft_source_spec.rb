@@ -33,7 +33,7 @@ describe 'minecraft::source' do
 
           is_expected.to contain_file('/opt/minecraft/minecraft_server.jar').that_requires(['User[minecraft]',
                                                                                             'Group[minecraft]',
-                                                                                            'Archive[minecraft_server]'])
+                                                                                            'Archive[minecraft_server]',])
         end
       end
     end
