@@ -6,5 +6,7 @@ class minecraft::packages {
     }
   }
 
-  ensure_packages('screen')
+  if $minecraft::manage_screen {
+    ensure_packages('screen')
+  }
 }

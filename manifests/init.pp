@@ -5,6 +5,7 @@ class minecraft (
   $source               = '1.7.4',          # Minecraft (semvar) or CraftBukkit ('recommended', 'beta', or 'dev'), or direct source (URL for wget)
   $autostart            = true,             # Start service at boot
   $manage_java          = true,             # Manage the JRE package
+  $manage_screen        = true,             # Manage the screen package
   $heap_size            = '1024',           # The maximum Java heap size in MB
   $heap_start           = '256',            # The initial Java heap size in MB
   $plugins              = {},               # Hash of plugins
@@ -49,7 +50,8 @@ class minecraft (
   $gen_structures       = true,
   $view_distance        = 10,
   $spawn_protection     = 16,
-$motd                 = 'A Minecraft Server') {
+  $motd                 = 'A Minecraft Server') {
+
   include minecraft::packages
   include minecraft::properties
   include minecraft::service
